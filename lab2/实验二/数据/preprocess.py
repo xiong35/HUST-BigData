@@ -14,6 +14,7 @@ for index, row in f.iterrows():
     persons[row['Id']] = row['Name']
     persons_[row['Name']] = row['Id']
 
+
 def name_uni(name):
     """
     对人名进行统一
@@ -26,6 +27,7 @@ def name_uni(name):
     if name in aliases.keys():
         return persons[aliases[name]]
     return name
+
 
 def generate_egdes():
     """
@@ -41,8 +43,12 @@ def generate_egdes():
         # 去掉不符合要求的
         if row['MetadataFrom'] not in persons_.keys() or row['MetadataTo'] not in persons_.keys():
             continue
-        sent_receive[index] = [persons_[row['MetadataFrom']], persons_[row['MetadataTo']]]
+        sent_receive[index] = [
+            persons_[row['MetadataFrom']], persons_[row['MetadataTo']]]
     # print(sent_receive)
     name = ['sent_id', 'receive_id']
     data = pd.DataFrame.from_dict(sent_receive, orient='index', columns=name)
     data.to_csv('sent_receive.csv')
+
+
+generate_egdes()
