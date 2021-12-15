@@ -2,12 +2,10 @@ from numpy.ma.core import dot
 import pandas as pd
 import numpy as np
 
-PERSON_COUNT = 513
 
-df = pd.read_csv(
-    "C:\\Users\\xiong35\\Desktop\\projects\\HUST-BigData\\lab2\\实验二\\数据\\sent_receive.csv")
+df = pd.read_csv("./实验二/数据/sent_receive.csv")
 
-mat = np.zeros((PERSON_COUNT, PERSON_COUNT))
+mat = np.zeros((513, 513))
 
 for (sent_id, part_df) in list(df.groupby('sent_id')):
     receivers = []
@@ -16,22 +14,21 @@ for (sent_id, part_df) in list(df.groupby('sent_id')):
     count = len(receivers)
     mat[receivers, int(sent_id)] = 1 / count
 
-# teleport
-
-Beta = 0.9
-mat = mat*Beta + np.ones((PERSON_COUNT, PERSON_COUNT))/PERSON_COUNT * (1-Beta)
-
-r = np.ones((PERSON_COUNT, 1)) / PERSON_COUNT
+r = np.ones((513, 1)) / 513
 
 while 1:
-
     new_r = np.dot(mat, r)
     diff = (new_r - r)**2
 
-    if np.sum(diff) < 1e-10:
+    if np.sum(diff) < 1e-8:
         break
     r = new_r
 
 with open("./result.txt", "w") as fw:
-    for index, val in enumerate(r):
-        fw.write(f"{index+1}:{float(val)}\n")
+    i = 0
+    while 1:
+        if i == len(r):
+            break
+
+        fw.write(str(i+1) + "\t"+str(float(r[i]))+"\n")
+        i += 1
