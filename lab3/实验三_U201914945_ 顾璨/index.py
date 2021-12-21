@@ -4,7 +4,7 @@ import pandas as pd
 读取数据
 """
 
-df = pd.read_csv("./实验三/数据/Groceries.csv")
+df = pd.read_csv("../实验三/数据/Groceries.csv")
 
 itemsets = []
 
@@ -136,8 +136,12 @@ with open("support3.txt", "w") as fw:
 
 
 tups = list(three_deg.keys())
-print("频繁二项集构造完毕，共有"+str(count)+"个，保存在 support3.txt")
+print("频繁三项集构造完毕，共有"+str(count)+"个，保存在 support3.txt")
 
+
+"""
+构造频繁三项集的关联规则
+"""
 
 rules = {}
 
