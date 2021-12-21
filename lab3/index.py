@@ -20,7 +20,7 @@ itemsets_len = itemsets.__len__()
 
 
 def build1deg(itemsets):
-    SAVE_PATH = "./ond_deg_support.txt"
+    SAVE_PATH = "./one_deg_support.txt"
 
     one_deg = {}
     for itemset in itemsets:
