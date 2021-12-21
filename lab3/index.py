@@ -110,3 +110,95 @@ def gen2deg_rules(one_deg, two_deg):
 
 
 gen2deg_rules(one_deg, two_deg)
+
+
+def build3deg(two_deg,  itemsets):
+    SAVE_PATH = "./three_deg_support.txt"
+
+    pairs = list(two_deg.keys())
+
+    itemset_3 = set()
+    for pair in pairs:
+        itemset_3.add(pair[0])
+        itemset_3.add(pair[1])
+    itemset_3 = list(itemset_3)
+    itemset_3.sort()
+
+    three_deg = {}
+
+    for i in range(0, len(itemset_3)):
+        for j in range(i+1, len(itemset_3)):
+            for k in range(j+1,  len(itemset_3)):
+                item_i = itemset_3[i]
+                item_j = itemset_3[j]
+                item_k = itemset_3[k]
+
+                for itemset in itemsets:
+                    if item_i in itemset and item_j in itemset and item_k in itemset:
+                        tup = (item_i, item_j, item_k)
+                        three_deg[tup] = three_deg.get(tup, 0)+1
+
+    three_deg_count = 0
+    tups = list(three_deg.keys())
+
+    with open(SAVE_PATH, "w") as fw:
+        for tup in tups:
+            support = three_deg[tup] / itemsets_len
+            if support > SUPPORT:
+                three_deg[tup] = support
+                fw.write(f"{tup}: {support}\n")
+                three_deg_count += 1
+            else:
+                del three_deg[tup]
+
+    print(f"频繁三项集数量: {three_deg_count}", )
+    print(f"频繁三项集保存在`{SAVE_PATH}`")
+
+    return three_deg
+
+
+three_deg = build3deg(two_deg,  itemsets)
+
+
+def gen3deg_rules(one_deg, two_deg, three_deg):
+    SAVE_PATH = "./three_deg_rules.txt"
+
+    tups = list(three_deg.keys())
+
+    rules = {}
+
+    def enumTup(tup):
+        return [
+            (tup, tup[0], (tup[1],  tup[2])),
+            (tup, tup[1], (tup[0],  tup[2])),
+            (tup, tup[2], (tup[0],  tup[1])),
+            (tup, (tup[1], tup[2]), tup[0]),
+            (tup, (tup[0], tup[2]), tup[1]),
+            (tup, (tup[0], tup[1]), tup[2]),
+        ]
+
+    three_deg_rule_num = 0
+    with open(SAVE_PATH, "w") as fw:
+        for tup in tups:
+            rules = enumTup(tup)
+            for three, one, two in rules[:3]:
+                conf = three_deg[three] / one_deg[one]
+                if conf > CONF:
+                    fw.write(f"{one}->{two}: {conf}\n")
+                    three_deg_rule_num += 1
+            for three, two, one in rules[3:]:
+                try:
+                    conf = three_deg[three] / two_deg[two]
+                except:
+                    try:
+                        conf = three_deg[three] / two_deg[(two[1], two[0])]
+                    except:
+                        print(two, "not found")
+                if conf > CONF:
+                    fw.write(f"{two}->{one}: {conf}\n")
+                    three_deg_rule_num += 1
+    print(f"频繁三项集规则数量: {three_deg_rule_num}", )
+    print(f"频繁三项集规则保存在`{SAVE_PATH}`")
+
+
+gen3deg_rules(one_deg, two_deg, three_deg)
