@@ -1,0 +1,41 @@
+('butter', 'domestic eggs')->whole milk: 0.6210526315789474
+('butter', 'root vegetables')->other vegetables: 0.5118110236220472
+('butter', 'whipped/sour cream')->other vegetables: 0.5700000000000001
+('butter', 'root vegetables')->whole milk: 0.6377952755905512
+('butter', 'whipped/sour cream')->whole milk: 0.66
+('chicken', 'root vegetables')->other vegetables: 0.5233644859813085
+('chicken', 'root vegetables')->whole milk: 0.5514018691588786
+('citrus fruit', 'domestic eggs')->whole milk: 0.5490196078431373
+('citrus fruit', 'root vegetables')->other vegetables: 0.5862068965517241
+('citrus fruit', 'whipped/sour cream')->other vegetables: 0.5233644859813085
+('citrus fruit', 'root vegetables')->whole milk: 0.5172413793103449
+('citrus fruit', 'whipped/sour cream')->whole milk: 0.5794392523364487
+('coffee', 'yogurt')->whole milk: 0.5208333333333333
+('curd', 'root vegetables')->other vegetables: 0.5046728971962617
+('curd', 'root vegetables')->whole milk: 0.5700934579439252
+('curd', 'whipped/sour cream')->whole milk: 0.5631067961165048
+('fruit/vegetable juice', 'root vegetables')->other vegetables: 0.5508474576271186
+('fruit/vegetable juice', 'root vegetables')->whole milk: 0.5423728813559322
+('margarine', 'root vegetables')->other vegetables: 0.5321100917431192
+('margarine', 'rolls/buns')->whole milk: 0.5379310344827587
+('newspapers', 'root vegetables')->other vegetables: 0.5221238938053098
+('newspapers', 'root vegetables')->whole milk: 0.504424778761062
+('pastry', 'root vegetables')->other vegetables: 0.537037037037037
+('pip fruit', 'root vegetables')->other vegetables: 0.5228758169934641
+('pip fruit', 'whipped/sour cream')->other vegetables: 0.6043956043956045
+('rolls/buns', 'root vegetables')->other vegetables: 0.502092050209205
+('root vegetables', 'shopping bags')->other vegetables: 0.5158730158730159
+('other vegetables', 'sugar')->whole milk: 0.5849056603773586
+('tropical fruit', 'whipped/sour cream')->other vegetables: 0.5661764705882353
+('other vegetables', 'whipped/sour cream')->whole milk: 0.5070422535211268
+('pastry', 'root vegetables')->whole milk: 0.5185185185185185
+('pip fruit', 'root vegetables')->whole milk: 0.5751633986928104
+('pip fruit', 'sausage')->whole milk: 0.5188679245283019
+('pip fruit', 'whipped/sour cream')->whole milk: 0.6483516483516485
+('rolls/buns', 'root vegetables')->whole milk: 0.5230125523012552
+('rolls/buns', 'whipped/sour cream')->whole milk: 0.5347222222222222
+('root vegetables', 'sausage')->whole milk: 0.5170068027210885
+('root vegetables', 'whipped/sour cream')->whole milk: 0.5535714285714286
+('sausage', 'whipped/sour cream')->whole milk: 0.5617977528089887
+('tropical fruit', 'whipped/sour cream')->whole milk: 0.573529411764706
+('tropical fruit', 'yogurt')->whole milk: 0.517361111111111
